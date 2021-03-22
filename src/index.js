@@ -8,3 +8,24 @@ document.getElementById("app").innerHTML = `
   <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
 </div>
 `;
+
+var getGlobal = function () {
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw new Error("unable to locate global object");
+};
+
+window.onload = () => {};
+
+import $ from "jquery";
+
+getGlobal();
+
+console.log($("#app").text('document.querySelector("app")?.innerHTML;'));
